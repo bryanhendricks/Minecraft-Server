@@ -1,0 +1,25 @@
+mkdir minecraft_forge_server
+cd minecraft_forge_server
+sudo wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.12.2-14.23.5.2847/forge-1.12.2-14.23.5.2847-installer.jar
+sudo wget https://launcher.mojang.com/mc/game/1.12.2/server/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar
+sudo mv server.jar minecraft_server.1.12.2.jar
+sudo java -jar forge-1.12.2-14.23.5.2847-installer.jar --installServer
+sudo java -Xms512M -jar forge-1.12.2-14.23.5.2847-universal.jar nogui
+> Modify eula.txt, set to true
+sudo java -Xms512M -jar forge-1.12.2-14.23.5.2847-universal.jar nogui
+> Wait for server to start, then `stop` it
+sudo rm -rf mods/
+sudo rm -rf config/
+sudo wget https://media.forgecdn.net/files/2800/990/RLCraft+Server+Pack+1.12.2+-+Beta+v2.7.zip
+sudo unzip -q RLCraft+Server+Pack+1.12.2+-+Beta+v2.7.zip
+sudo mv RLCraft\ Server\ Pack\ 1.12.2\ -\ Beta\ v2.7/ RLCraft_Server_Pack_1.12.2_Beta_v2.7/
+sudo cp -r RLCraft_Server_Pack_1.12.2_Beta_v2.7/* ./
+sudo rm -rf RLCraft_Server_Pack_1.12.2_Beta_v2.7/
+
+> Edit server.properties with the following:
+max-tick-time=-1
+difficulty=3
+allow-flight=true
+
+
+sudo java -Xms512M -jar forge-1.12.2-14.23.5.2847-universal.jar nogui

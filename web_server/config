@@ -1,0 +1,3 @@
+[default]
+region = us-west-1a
+output = json
