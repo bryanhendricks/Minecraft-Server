@@ -1,19 +1,28 @@
 #!/usr/bin/env python3
 from mcstatus import MinecraftServer
 import boto3
+import configparser
 
 # Print the header
 print('Content-Type: text/html\n')
 
 # Gather the unformatted HTML for the opening page
-with open('start.html', 'r') as html_file:
+with open('raw_form.html', 'r') as html_file:
         raw_html_form = html_file.read()
+
+# Get credentials
+creds_config = configparser.ConfigParser()
+creds_config.read('/home/ubuntu/minecraft-server/web_server/credentials')
+ACCESS_KEY = creds_config['default']['aws_access_key_id']
+SECRET_KEY = creds_config['default']['aws_secret_access_key']
 
 # Get the AWS server status
 try:
     ec2 = boto3.client(
         'ec2',
-        region_name = 'us-west-1'
+        region_name='us-west-1',
+        aws_access_key_id=ACCESS_KEY,
+        aws_secret_access_key=SECRET_KEY
     )
 except Exception as e:
     print('Exception: ' + str(e))

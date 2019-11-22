@@ -3,14 +3,23 @@ import boto3
 from subprocess import call
 import time
 from mcstatus import MinecraftServer
+import configparser
 
 
 print("Content-Type: text/html\n")
 
+# Get credentials
+creds_config = configparser.ConfigParser()
+creds_config.read('/home/ubuntu/minecraft-server/web_server/credentials')
+ACCESS_KEY = creds_config['default']['aws_access_key_id']
+SECRET_KEY = creds_config['default']['aws_secret_access_key']
+
 # Get the server status
 ec2 = boto3.client(
     'ec2',
-    region_name = 'us-west-1'
+    region_name='us-west-1',
+    aws_access_key_id=ACCESS_KEY,
+    aws_secret_access_key=SECRET_KEY
 )
 
 # Get the server status
