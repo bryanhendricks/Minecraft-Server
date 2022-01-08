@@ -1,2 +1,2 @@
-@reboot /home/ec2-user/hardcore_server/run_mc_server.sh
-@reboot python3 /home/ec2-user/auto_shutdown.py
+@reboot /home/ubuntu/minecraft-server/server_startup_shutdown/run_mc_server.sh
+@reboot python3 /home/ubuntu/minecraft-server/server_startup_shutdown/auto_shutdown.py

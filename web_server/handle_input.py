@@ -6,6 +6,9 @@ from mcstatus import MinecraftServer
 import configparser
 
 
+MINECRAFT_SERVER_INSTANCE_ID = 'i-00c2d1af54569b884'
+MINECRAFT_SERVER_IP_ADDRESS = '52.53.212.107'
+
 print("Content-Type: text/html\n")
 
 # Get credentials
@@ -24,7 +27,7 @@ ec2 = boto3.client(
 
 # Get the server status
 full_status = ec2.describe_instances(
-    InstanceIds=['i-074c82fc5718bf939']
+    InstanceIds=[MINECRAFT_SERVER_INSTANCE_ID]
 )
 server_state = full_status['Reservations'][0]['Instances'][0]['State']['Name']
 # Check if the server is stopped
@@ -32,7 +35,7 @@ if server_state == 'stopped':
     # Start the server
     try:
         ec2.start_instances(
-            InstanceIds=['i-074c82fc5718bf939']
+            InstanceIds=[MINECRAFT_SERVER_INSTANCE_ID]
         )
     except:
         print('Something went wrong while starting the server, tell Bryan to fix it')
@@ -45,7 +48,7 @@ if server_state == 'stopped':
         time.sleep(3)
         # Get the server status
         full_status = ec2.describe_instances(
-            InstanceIds=['i-074c82fc5718bf939']
+            InstanceIds=[MINECRAFT_SERVER_INSTANCE_ID]
         )
         server_state = full_status['Reservations'][0]['Instances'][0]['State']['Name']
         if server_state != 'running':
@@ -66,7 +69,7 @@ while True:
     time.sleep(3)
     # Get the MineCraft instance status
     try:
-        server = MinecraftServer('52.52.246.252', 25565)
+        server = MinecraftServer(MINECRAFT_SERVER_IP_ADDRESS, 25565)
         mc_status = server.status()
         print(' Done - the MineCraft instance is up, with a latency of {} ms'.format(mc_status.latency))
         break

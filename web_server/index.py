@@ -3,6 +3,9 @@ from mcstatus import MinecraftServer
 import boto3
 import configparser
 
+MINECRAFT_SERVER_INSTANCE_ID = 'i-00c2d1af54569b884'
+MINECRAFT_SERVER_IP_ADDRESS = '52.53.212.107'
+
 # Print the header
 print('Content-Type: text/html\n')
 
@@ -27,7 +30,7 @@ try:
 except Exception as e:
     print('Exception: ' + str(e))
 full_status = ec2.describe_instances(
-    InstanceIds=['i-074c82fc5718bf939']
+    InstanceIds=[MINECRAFT_SERVER_INSTANCE_ID]
 )
 server_state = full_status['Reservations'][0]['Instances'][0]['State']['Name']
 
@@ -43,7 +46,7 @@ elif server_state == 'pending':
 elif server_state == 'running':
     # Get the MC server status
     try:
-        server = MinecraftServer('52.52.246.252', 25565)
+        server = MinecraftServer(MINECRAFT_SERVER_IP_ADDRESS, 25565)
         mc_status = server.status()
         raw_html_form = raw_html_form.format("""
         The server is up - it has {0} players online, and a latency of {1} ms""".format(mc_status.players.online, mc_status.latency)

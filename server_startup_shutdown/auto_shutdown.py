@@ -1,6 +1,6 @@
 from mcstatus import MinecraftServer
 import time
-from subprocess import call
+import subprocess
 import os
 
 
@@ -43,7 +43,7 @@ while True:
 print('Shutting down the server')
 # Shut down the server
 try:
-    call(['/home/ec2-user/minecraft_forge_server/stop_mc_server.sh'])
+    subprocess.call(['/home/ubuntu/minecraft-server/stop_mc_server.sh'])
 except:
     print('Unable to stop MineCraft instance')
 
