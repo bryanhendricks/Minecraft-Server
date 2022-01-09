@@ -4,12 +4,14 @@ import subprocess
 import os
 
 
+MINECRAFT_SERVER_PORT = 25565
+
 # Wait for the server to start
 print('Waiting for server to go live')
 while True:
     time.sleep(5)
     try:
-        server = MinecraftServer('localhost', 25565)
+        server = MinecraftServer('localhost', MINECRAFT_SERVER_PORT)
         mc_status = server.status()
         break
     except:
@@ -23,7 +25,7 @@ while True:
 
     # Get the server player count
     try:
-        server = MinecraftServer('localhost', 25565)
+        server = MinecraftServer('localhost', MINECRAFT_SERVER_PORT)
         mc_status = server.status()
         player_count = mc_status.players.online
     except:
@@ -43,7 +45,7 @@ while True:
 print('Shutting down the server')
 # Shut down the server
 try:
-    subprocess.call(['/home/ubuntu/minecraft-server/stop_mc_server.sh'])
+    subprocess.call(['/home/ubuntu/minecraft-server/server_startup_shutdown/stop_mc_server.sh'])
 except:
     print('Unable to stop MineCraft instance')
 
