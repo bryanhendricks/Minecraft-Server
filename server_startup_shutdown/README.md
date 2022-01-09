@@ -3,7 +3,7 @@ To install java, run `sudo apt-get update; sudo apt-get -y install openjdk-17-jr
 To install script dependencies, run the following:
 ```
 sudo apt-get install -y python3 python3-pip
-pip3 install mcstatus
+sudo pip3 install mcstatus
 sudo chmod +x /home/ubuntu/minecraft-server/server_startup_shutdown/*.sh
 ```
 
