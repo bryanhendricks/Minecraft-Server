@@ -1,3 +1,3 @@
 #!/bin/bash
-JAR_PATH='/home/ubuntu/minecraft-server/minecraft_server.1.18.1.jar'
+JAR_PATH='/home/ubuntu/minecraft-server/paper-1.18.1-140.jar'
 tmux new-session -d -s MinecraftServer 'cd /home/ubuntu/minecraft-server/minecraft; sudo java -Xms2G -Xmx14G -jar $JAR_PATH nogui; exec bash'
