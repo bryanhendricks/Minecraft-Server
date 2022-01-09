@@ -45,6 +45,7 @@ def start_server(ec2, MINECRAFT_SERVER_INSTANCE_ID):
         except Exception as e:
             print('Error starting server: ' + str(e))
             return False
+        return True
     else:
         # The AWS server is starting up, or already up - return the status
         print('Server is not stopped (status: %s), returning server status' % server_status)
