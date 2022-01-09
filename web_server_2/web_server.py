@@ -2,7 +2,7 @@ import os, sys
 from flask import Flask, request, redirect
 import time
 sys.path.append(os.path.dirname(__file__))
-from src import connect_aws, get_server_status
+from src import connect_aws, get_server_status, start_server
 
 
 MINECRAFT_SERVER_INSTANCE_ID = 'i-00c2d1af54569b884'
@@ -27,7 +27,7 @@ def home_page():
         if request.form.get('start_server') == 'Start server':
             print('"Start server" button pressed')
             # Try to start the server
-            server_status = get_server_status(connect_aws(), MINECRAFT_SERVER_INSTANCE_ID)
+            server_status = start_server(connect_aws(), MINECRAFT_SERVER_INSTANCE_ID)
             if not server_status:
                 # An error occurred starting the server - display an error message
                 return '<h1>Something went wrong while starting the server, tell Bryan to fix it</h1>'
