@@ -17,12 +17,14 @@ def home_page():
     if request.method == 'GET':
         print('Home page load')
         page_data = """
-            <input type="submit" name="submit_button" value="Start server">
+            <form method="post" action="/">
+                <input type="submit" value="Start server" name="start_server"/>
+            </form>
         """
         return page_data
     # Handle button press
     elif request.method == 'POST':
-        if request.form['submit_button'] == 'Start server':
+        if request.form.get('start_server') == 'Start server':
             print('"Start server" button pressed')
             # Try to start the server
             server_status = get_server_status(connect_aws(), MINECRAFT_SERVER_INSTANCE_ID)
