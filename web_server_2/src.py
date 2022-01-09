@@ -6,7 +6,7 @@ def connect_aws():
     # Get credentials
     print('Getting AWS credentials')
     creds_config = configparser.ConfigParser()
-    creds_config.read('/home/ubuntu/minecraft-server/web_server/credentials')
+    creds_config.read('/home/ubuntu/minecraft-server/web_server_2/credentials')
     ACCESS_KEY = creds_config['default']['aws_access_key_id']
     SECRET_KEY = creds_config['default']['aws_secret_access_key']
     # Connect to AWS
