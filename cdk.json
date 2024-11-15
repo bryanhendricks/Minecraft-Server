@@ -7,7 +7,9 @@
         "account": "<ACCOUNT ID>",
         "region": "us-west-2",
         "ec2_type": "c5.xlarge",
-        "key_name": "<KEY NAME>"
+        "key_name": "<KEY NAME>",
+        "admin_username": "<YOUR MINECRAFT USERNAME>",
+        "admin_uuid": "<YOUR MINECRAFT UUID>"
       }
     }
   }

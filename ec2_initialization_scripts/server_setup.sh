@@ -40,6 +40,17 @@ if [ ! -d "$MODPACK_DIR" ]; then
     echo "eula=true" > "$MODPACK_DIR/eula.txt"
     # Make the start script executable
     chmod +x "$MODPACK_DIR/start.sh"
+    # Set the server operators
+    sudo cat > $MODPACK_DIR/ops.json <<EOL
+[
+    {
+        "uuid": "__OPS_UUID__",
+        "name": "__OPS_USERNAME__",
+        "level": 4,
+        "bypassesPlayerLimit": true
+    }
+]
+EOL
 fi
 
 # Set the minecraft folder to be owned by the ubuntu user

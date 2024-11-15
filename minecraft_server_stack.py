@@ -129,6 +129,8 @@ class MinecraftServerStack(Stack):
             minecraft_user_data_script
             .replace("__EFS_FILE_SYSTEM_ID__", efs_filesystem.file_system_id)
             .replace("__AWS_REGION__", self.region)
+            .replace("__OPS_UUID__", conf.get("admin_uuid"))
+            .replace("__OPS_USERNAME__", conf.get("admin_username"))
         )
         user_data_minecraft_server = ec2.UserData.for_linux()
         user_data_minecraft_server.add_commands(minecraft_user_data_script)

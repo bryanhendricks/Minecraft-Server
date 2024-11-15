@@ -25,7 +25,7 @@ version = "1.20.1"
 [server]
 address = "__MINECRAFT_SERVER_IP__:25565"
 command = "/home/ubuntu/startup.sh __MINECRAFT_INSTANCE_ID__ __SERVER_REGION__"
-shutdown_command = "/home/ubuntu/shutdown.sh __MINECRAFT_INSTANCE_ID__ __SERVER_REGION__"
+stop_command = "/home/ubuntu/shutdown.sh __MINECRAFT_INSTANCE_ID__ __SERVER_REGION__"
 forge = true
 start_timeout = 900
 stop_timeout = 500
