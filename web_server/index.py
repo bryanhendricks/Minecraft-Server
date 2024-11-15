@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
 import boto3
 import configparser
 
@@ -46,7 +46,7 @@ elif server_state == 'pending':
 elif server_state == 'running':
     # Get the MC server status
     try:
-        server = MinecraftServer(MINECRAFT_SERVER_IP_ADDRESS, 25565)
+        server = JavaServer(MINECRAFT_SERVER_IP_ADDRESS, 25565)
         mc_status = server.status()
         raw_html_form = raw_html_form.format("""
         The server is up - it has {0} players online, and a latency of {1} ms""".format(mc_status.players.online, mc_status.latency)

@@ -1,4 +1,4 @@
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
 import time
 import subprocess
 import os
@@ -11,7 +11,7 @@ print('Waiting for server to go live')
 while True:
     time.sleep(5)
     try:
-        server = MinecraftServer('localhost', MINECRAFT_SERVER_PORT)
+        server = JavaServer('localhost', MINECRAFT_SERVER_PORT)
         mc_status = server.status()
         break
     except:
@@ -25,7 +25,7 @@ while True:
 
     # Get the server player count
     try:
-        server = MinecraftServer('localhost', MINECRAFT_SERVER_PORT)
+        server = JavaServer('localhost', MINECRAFT_SERVER_PORT)
         mc_status = server.status()
         player_count = mc_status.players.online
     except:

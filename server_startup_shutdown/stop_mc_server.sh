@@ -1,2 +1,2 @@
 #!/bin/bash
-tmux send-keys -t MinecraftServer "stop" Enter
+tmux send-keys -t JavaServer "stop" Enter

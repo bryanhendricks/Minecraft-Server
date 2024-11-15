@@ -3,7 +3,8 @@ from flask import Flask, request, redirect
 import time
 sys.path.append(os.path.dirname(__file__))
 from src import connect_aws, get_server_status, start_server
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
+from flask_httpauth import HTTPBasicAuth
 
 
 MINECRAFT_SERVER_INSTANCE_ID = 'i-00c2d1af54569b884'
@@ -13,9 +14,20 @@ MINECRAFT_SERVER_PORT = 25565
 
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+
+
+@auth.verify_password
+def verify_password(username, password):
+    # Get password
+    with open('/home/ubuntu/.webserver_creds') as f:
+        stored_password = f.read().strip()
+    if username == 'scambot' and password == stored_password:
+        return username
 
 
 @app.route('/', methods=['GET', 'POST'])
+@auth.login_required
 def home_page():
     # Handle page load
     if request.method == 'GET':
@@ -40,13 +52,14 @@ def home_page():
 
 
 @app.route('/status')
+@auth.login_required
 def status_page():
     print('Getting server status')
     # Get and display the server status
     server_status = get_server_status(connect_aws(), MINECRAFT_SERVER_INSTANCE_ID)
     if server_status == 'running':
         try:
-            server = MinecraftServer(MINECRAFT_SERVER_IP, MINECRAFT_SERVER_PORT)
+            server = JavaServer(MINECRAFT_SERVER_IP, MINECRAFT_SERVER_PORT)
             mc_status = server.status()
             player_count = mc_status.players.online
             # Server is up

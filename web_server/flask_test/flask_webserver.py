@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
 import boto3
 
 app = Flask(__name__)

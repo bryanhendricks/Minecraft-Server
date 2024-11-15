@@ -2,7 +2,7 @@
 import boto3
 from subprocess import call
 import time
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
 import configparser
 
 
@@ -69,7 +69,7 @@ while True:
     time.sleep(3)
     # Get the MineCraft instance status
     try:
-        server = MinecraftServer(MINECRAFT_SERVER_IP_ADDRESS, 25565)
+        server = JavaServer(MINECRAFT_SERVER_IP_ADDRESS, 25565)
         mc_status = server.status()
         print(' Done - the MineCraft instance is up, with a latency of {} ms'.format(mc_status.latency))
         break
