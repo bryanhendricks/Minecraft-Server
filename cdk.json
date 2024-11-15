@@ -6,7 +6,8 @@
         "stack_name": "BetterMinecraftServerStack",
         "account": "<ACCOUNT ID>",
         "region": "us-west-2",
-        "ec2_type": "c5.xlarge"
+        "ec2_type": "c5.xlarge",
+        "key_name": "<KEY NAME>"
       }
     }
   }

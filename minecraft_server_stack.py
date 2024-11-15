@@ -153,7 +153,7 @@ class MinecraftServerStack(Stack):
                     ),
                 )
             ],
-            key_name="ssh-access-2024",
+            key_name=conf.get("key_name"),
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
         )
         minecraft_instance.role.add_managed_policy(
@@ -186,7 +186,7 @@ class MinecraftServerStack(Stack):
             vpc=vpc,
             security_group=proxy_sg,
             user_data=user_data,
-            key_name="ssh-access-2024",
+            key_name=conf.get("key_name"),
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
         )
         proxy_instance.role.attach_inline_policy(
