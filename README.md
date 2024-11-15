@@ -20,4 +20,6 @@ I recommend using [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) a
 
 Once you have AWS CDK installed and authenticated with your AWS account, run `cdk deploy --require-approval=never` from this repo's folder, and wait a while. If it breaks, dang. If not, it should give you a public IP address, which you can put into your Minecraft server browser. To get the proxy server to start up the Minecraft server, just try to connect to the proxy server, then wait like 10 minutes because Better Minecraft takes forever to start. The Minecraft server will automatically shut down once nobody's been on the server for a few minutes.
 
+The Minecraft server will be online until a player connects - after this point, the LazyMC process will take over, and once no players are online for a few minutes, LazyMC will shut down the Minecraft server (until somebody tries to connect again).
+
 To remove any and all trace of the Minecraft server, run `cdk destroy`. **This will delete your world - use caution.** I recommend backing up your world locally with something like [world_backup.sh](world_backup.sh).
