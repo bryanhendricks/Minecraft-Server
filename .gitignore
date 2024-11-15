@@ -5,3 +5,4 @@ web_server_2/credentials
 cdk.context.json
 *.pyc
 cdk.out
+*.zip
