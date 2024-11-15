@@ -4,6 +4,8 @@ This repo is used to spin up a Minecraft server in AWS. It uses the [LazyMC Prox
 ### Custom LazyMC Executable
 LazyMC was designed to work with a locally-running Minecraft instance, not a separate server, so I made some terrible ChatGPT-driven changes and compiled a new version that allows LazyMC to handle remote servers. As a result, this executable has only been tested with Minecraft 1.20.1, and is almost guaranteed to not work with any other version.
 
+The changes in question are at https://github.com/bryanhendricks/lazymc_aws/tree/aws, and are based on (LazyMC version 0.2.10)[https://github.com/timvisee/lazymc/tree/v0.2.10].
+
 ### BetterMC
 This repo is specifically designed to spin up an instance of Minecraft using the (Better Minecraft mod pack)[https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4]. In order to make this modpack work with the AWS infrastructure it's running on, I had to disable the `NoChatReports` mod (no, I don't know why it works when I use EBS, but doesn't work when I use EFS; I suspect witchcraft) - this means than the first time or two that anyone tries to use text chat on the server, it will give them a warning pop-up saying that Microsoft can read your messages. This is the default Minecraft behavior, and is merely a result of clients still having the `NoChatReports` mod installed, while the server does not.
 
