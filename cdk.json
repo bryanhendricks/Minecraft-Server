@@ -1,0 +1,13 @@
+{
+  "app": "python app.py",
+  "context": {
+    "environments": {
+      "default": {
+        "stack_name": "BetterMinecraftServerStack",
+        "account": "<ACCOUNT ID",
+        "region": "us-west-2",
+        "ec2_type": "c5.xlarge"
+      }
+    }
+  }
+}

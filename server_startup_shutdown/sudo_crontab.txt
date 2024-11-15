@@ -1,1 +1,0 @@
-@reboot python3 /home/ubuntu/minecraft-server/server_startup_shutdown/auto_shutdown.py
