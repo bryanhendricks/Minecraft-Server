@@ -161,7 +161,6 @@ class MinecraftServerStack(Stack):
         )
 
         minecraft_private_ip = minecraft_instance.instance_private_ip
-        CfnOutput(self, "MinecraftServerPrivateIP", value=minecraft_private_ip)
 
         # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # LazyMC proxy setup
