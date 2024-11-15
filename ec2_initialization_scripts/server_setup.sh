@@ -1,6 +1,6 @@
 # Install dependencies
 sudo apt update -y
-sudo apt install -y wget unzip ntp nfs-common openjdk-17-jdk
+sudo apt install -y wget unzip ntp nfs-common openjdk-17-jdk zip
 
 # Start NTP via Chrony
 sudo systemctl start ntp
